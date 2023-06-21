@@ -34,7 +34,14 @@ class MainVC: UIViewController, GIDSignInDelegate, LoginButtonDelegate {
     }
 
     @IBAction func signInWithAppleBtnPressed(_ sender: UIButton) {
-        // Implement your Apple sign-in functionality here
+        let appleIDProvider = ASAuthorizationAppleIDProvider()
+        let request = appleIDProvider.createRequest()
+        request.requestedScopes = [.fullName, .email]
+
+        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+        authorizationController.delegate = self
+        authorizationController.presentationContextProvider = self
+        authorizationController.performRequests()
     }
 
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
@@ -79,7 +86,7 @@ class MainVC: UIViewController, GIDSignInDelegate, LoginButtonDelegate {
     func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
         // Handle Facebook logout
     }
-    
+
     func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
         if result != nil {
             if let grantedPermissions = result?.grantedPermissions, grantedPermissions.contains("email") {
@@ -93,6 +100,35 @@ class MainVC: UIViewController, GIDSignInDelegate, LoginButtonDelegate {
             print("Facebook login cancelled.")
         }
     }
+}
 
+extension MainVC: ASAuthorizationControllerDelegate {
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
+            let userID = appleIDCredential.user
+            let email = appleIDCredential.email
+            let fullName = appleIDCredential.fullName
+
+            let name = "\(fullName?.givenName ?? "") \(fullName?.familyName ?? "")"
+
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let destinationVC = storyBoard.instantiateViewController(withIdentifier: "DetailVC") as! DetailVC
+            destinationVC.name = name
+            destinationVC.userID = userID
+            destinationVC.email = email
+            destinationVC.profileUrl = nil // Apple sign-in doesn't provide a profile picture
+            navigationController?.pushViewController(destinationVC, animated: true)
+        }
+    }
+
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        print("Apple sign-in error: \(error.localizedDescription)")
+    }
+}
+
+extension MainVC: ASAuthorizationControllerPresentationContextProviding {
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        return self.view.window!
+    }
 }
 
