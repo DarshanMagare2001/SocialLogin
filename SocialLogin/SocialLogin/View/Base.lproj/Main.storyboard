@@ -16,17 +16,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Social LogIn" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m4R-Lh-6mw">
-                                <rect key="frame" x="20" y="44" width="280" height="40"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wXa-EM-yHS">
+                                <rect key="frame" x="20" y="64" width="280" height="254"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Social LogIn" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m4R-Lh-6mw">
+                                        <rect key="frame" x="10" y="97" width="260.5" height="60"/>
+                                        <fontDescription key="fontDescription" type="italicSystem" pointSize="50"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="gyR-R4-qBo"/>
+                                    <constraint firstItem="m4R-Lh-6mw" firstAttribute="centerY" secondItem="wXa-EM-yHS" secondAttribute="centerY" id="TmV-Hf-Ccm"/>
+                                    <constraint firstItem="m4R-Lh-6mw" firstAttribute="centerX" secondItem="wXa-EM-yHS" secondAttribute="centerX" id="f10-Qg-Xmh"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="italicSystem" pointSize="30"/>
-                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GOd-fy-NQw">
-                                <rect key="frame" x="20" y="114" width="280" height="190"/>
+                                <rect key="frame" x="20" y="338" width="280" height="190"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="JxU-cX-nty">
                                         <rect key="frame" x="10" y="10" width="260" height="170"/>
@@ -115,6 +122,7 @@
                                     <constraint firstItem="JxU-cX-nty" firstAttribute="leading" secondItem="GOd-fy-NQw" secondAttribute="leading" constant="10" id="TBb-Dk-Ma0"/>
                                     <constraint firstAttribute="trailing" secondItem="JxU-cX-nty" secondAttribute="trailing" constant="10" id="ivs-EP-O2Z"/>
                                     <constraint firstItem="JxU-cX-nty" firstAttribute="top" secondItem="GOd-fy-NQw" secondAttribute="top" constant="10" id="j6n-yb-TU2"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="190" id="sFr-f1-KcS"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -123,12 +131,12 @@
                         <constraints>
                             <constraint firstItem="GOd-fy-NQw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="60w-K8-C4E"/>
                             <constraint firstItem="GOd-fy-NQw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="7gp-Nq-s2F"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="m4R-Lh-6mw" secondAttribute="trailing" constant="20" id="L0G-nD-rMu"/>
+                            <constraint firstItem="wXa-EM-yHS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Avz-Ze-6qe"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="GOd-fy-NQw" secondAttribute="bottom" constant="40" id="FZ3-mA-rPD"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="GOd-fy-NQw" secondAttribute="trailing" constant="20" id="OM6-eG-RhO"/>
-                            <constraint firstItem="m4R-Lh-6mw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="R8C-Zz-Cig"/>
-                            <constraint firstItem="GOd-fy-NQw" firstAttribute="top" secondItem="m4R-Lh-6mw" secondAttribute="bottom" constant="30" id="Wp1-pJ-9PU"/>
-                            <constraint firstItem="m4R-Lh-6mw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="X12-KE-is0"/>
-                            <constraint firstItem="m4R-Lh-6mw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="xSn-bj-Jws"/>
+                            <constraint firstItem="GOd-fy-NQw" firstAttribute="top" secondItem="wXa-EM-yHS" secondAttribute="bottom" constant="20" id="dbx-rC-hkk"/>
+                            <constraint firstItem="wXa-EM-yHS" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="mRa-3E-yyl"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wXa-EM-yHS" secondAttribute="trailing" constant="20" id="qvx-KY-wor"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Zje-Ss-FrV"/>
