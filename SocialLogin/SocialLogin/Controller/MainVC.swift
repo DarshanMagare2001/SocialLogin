@@ -11,11 +11,6 @@ import FBSDKLoginKit
 import FacebookLogin
 
 class MainVC: UIViewController , GIDSignInDelegate , LoginButtonDelegate {
-    
-    
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         GIDSignIn.sharedInstance()?.delegate = self
@@ -56,11 +51,11 @@ class MainVC: UIViewController , GIDSignInDelegate , LoginButtonDelegate {
     }
     
     func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
-        <#code#>
+        
     }
     
     func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
-        <#code#>
+        
     }
     
     
