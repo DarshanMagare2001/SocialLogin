@@ -6,16 +6,22 @@
 //
 
 import UIKit
+import GoogleSignIn
 
-class MainVC: UIViewController {
+class MainVC: UIViewController , GIDSignInDelegate {
+   
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        GIDSignIn.sharedInstance()?.delegate = self
         // Do any additional setup after loading the view.
     }
 
     
     @IBAction func signInWithGoogleBtnPressed(_ sender: UIButton) {
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+        GIDSignIn.sharedInstance()?.signIn()
         
     }
     
@@ -28,6 +34,14 @@ class MainVC: UIViewController {
     @IBAction func signInWithAppleBtnPressed(_ sender: UIButton) {
         
         
+    }
+    
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        
+        if error == nil {
+            print(user.userID!)
+        }
     }
     
 }

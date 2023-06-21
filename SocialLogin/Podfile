@@ -7,6 +7,5 @@ target 'SocialLogin' do
 
   # Pods for SocialLogin
 
-pod 'GoogleSignIn'
-
+  pod 'GoogleSignIn', '~> 5.0'
 end
