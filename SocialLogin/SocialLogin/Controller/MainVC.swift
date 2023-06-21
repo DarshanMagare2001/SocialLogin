@@ -2,6 +2,7 @@ import UIKit
 import GoogleSignIn
 import FBSDKLoginKit
 import FacebookLogin
+import AuthenticationServices
 
 class MainVC: UIViewController, GIDSignInDelegate, LoginButtonDelegate {
     override func viewDidLoad() {
