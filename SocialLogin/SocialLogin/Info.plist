@@ -17,14 +17,14 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fbAPP-ID</string>
+				<string>fb587464476857906</string>
 			</array>
 		</dict>
 	</array>
 	<key>FacebookAppID</key>
-	<string>APP-ID</string>
+	<string>587464476857906</string>
 	<key>FacebookClientToken</key>
-	<string>CLIENT-TOKEN</string>
+	<string>5b1a2c755262d9efaeeda28362dce368</string>
 	<key>FacebookDisplayName</key>
 	<string>SocialLogIn</string>
 	<key>LSApplicationQueriesSchemes</key>
