@@ -51,6 +51,9 @@
                                                         <buttonConfiguration key="configuration" style="plain" title="Sign In with Google">
                                                             <fontDescription key="titleFontDescription" type="boldSystem" pointSize="17"/>
                                                         </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="signInWithGoogleBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2iV-qO-dRB"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -73,6 +76,9 @@
                                                         <buttonConfiguration key="configuration" style="plain" title="Sign In with Facebook">
                                                             <fontDescription key="titleFontDescription" type="boldSystem" pointSize="17"/>
                                                         </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="signInWithFacebookBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="39P-Sw-lEi"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -94,6 +100,9 @@
                                                         <buttonConfiguration key="configuration" style="plain" title="Sign In with Apple">
                                                             <fontDescription key="titleFontDescription" type="boldSystem" pointSize="17"/>
                                                         </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="signInWithAppleBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="02K-Ui-P9W"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
