@@ -8,4 +8,10 @@ target 'SocialLogin' do
   # Pods for SocialLogin
 
   pod 'GoogleSignIn', '~> 5.0'
+
+pod 'FacebookCore'
+pod 'FacebookLogin'
+pod 'FacebookShare' 
+
+
 end
