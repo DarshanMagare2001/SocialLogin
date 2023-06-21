@@ -38,11 +38,27 @@ class MainVC: UIViewController , GIDSignInDelegate {
     
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        
         if error == nil {
-            print(user.userID!)
+//            print("User ID: \(user.userID ?? "")")
+//            print("User Full Name: \(user.profile.name ?? "")")
+//            print("User Given Name: \(user.profile.givenName ?? "")")
+//            print("User Family Name: \(user.profile.familyName ?? "")")
+//            print("User Email: \(user.profile.email ?? "")")
+            guard let data = user.profile else {return}
+            guard let profilePictureURL = user.profile.imageURL(withDimension: 200)?.absoluteString  else { return }
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let destinationVC = storyBoard.instantiateViewController(withIdentifier: "DetailVC") as! DetailVC
+            destinationVC.name = data.name
+            destinationVC.userID = user.userID
+            destinationVC.email = data.email
+            destinationVC.profileUrl = profilePictureURL
+            navigationController?.pushViewController(destinationVC, animated: true)
+            
         }
+        
+        
     }
+
     
 }
 
