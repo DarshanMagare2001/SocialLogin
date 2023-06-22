@@ -17,10 +17,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wXa-EM-yHS">
-                                <rect key="frame" x="20" y="44" width="280" height="294"/>
+                                <rect key="frame" x="20" y="64" width="280" height="274"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Social LogIn" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m4R-Lh-6mw">
-                                        <rect key="frame" x="0.0" y="0.0" width="280" height="294"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="274"/>
                                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="45"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -245,7 +245,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="GOd-fy-NQw" secondAttribute="trailing" constant="20" id="m39-GY-jZH"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wXa-EM-yHS" secondAttribute="trailing" constant="20" id="mJa-xL-Sz3"/>
                             <constraint firstItem="LMe-v8-OXJ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="qBz-AW-MvF"/>
-                            <constraint firstItem="wXa-EM-yHS" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="yab-fj-sUy"/>
+                            <constraint firstItem="wXa-EM-yHS" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="yab-fj-sUy"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Zje-Ss-FrV"/>
@@ -330,11 +330,14 @@
                                                 <real key="value" value="20"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="logOutBtnPressed:" destination="WjZ-Vp-b7N" eventType="touchUpInside" id="hbn-WH-Mem"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gYb-jW-AbJ">
-                                <rect key="frame" x="20" y="44" width="280" height="283"/>
+                                <rect key="frame" x="20" y="64" width="280" height="263"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="layerBorderColor">
                                         <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -352,7 +355,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="z8f-3i-zYh" firstAttribute="bottom" secondItem="7uT-Ev-Gd9" secondAttribute="bottom" constant="20" id="6YF-Vr-fu7"/>
-                            <constraint firstItem="gYb-jW-AbJ" firstAttribute="top" secondItem="z8f-3i-zYh" secondAttribute="top" id="OVB-5G-0Sr"/>
+                            <constraint firstItem="gYb-jW-AbJ" firstAttribute="top" secondItem="z8f-3i-zYh" secondAttribute="top" constant="20" id="OVB-5G-0Sr"/>
                             <constraint firstItem="7uT-Ev-Gd9" firstAttribute="leading" secondItem="z8f-3i-zYh" secondAttribute="leading" constant="20" id="RFY-L8-oyD"/>
                             <constraint firstItem="7uT-Ev-Gd9" firstAttribute="top" secondItem="gYb-jW-AbJ" secondAttribute="bottom" constant="20" id="apc-Hl-qKc"/>
                             <constraint firstItem="gYb-jW-AbJ" firstAttribute="leading" secondItem="z8f-3i-zYh" secondAttribute="leading" constant="20" id="dyk-Ka-LwD"/>
