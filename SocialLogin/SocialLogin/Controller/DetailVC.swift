@@ -40,14 +40,23 @@ class DetailVC: UIViewController {
     // Helper method to show logout success alert and pop the view controller
     private func showLogoutSuccessAlert() {
         DispatchQueue.main.async { [weak self] in
-            let alertController = UIAlertController(title: "Logout Successful", message: "You have been successfully logged out.", preferredStyle: .alert)
+            guard let self = self else { return }
+            
+            var message = "You have been successfully logged out."
+            
+            if let nameOfSocialmedia = self.nameOfSocialmedia {
+                message += "From \(nameOfSocialmedia)"
+            }
+            
+            let alertController = UIAlertController(title: "Logout Successful", message: message, preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] _ in
                 // Pop the current view controller from the navigation stack
                 self?.navigationController?.popViewController(animated: true)
             }))
-            self?.present(alertController, animated: true, completion: nil)
+            self.present(alertController, animated: true, completion: nil)
         }
     }
+
     
     // Helper method to show logout failure alert
     private func showLogoutFailureAlert() {
