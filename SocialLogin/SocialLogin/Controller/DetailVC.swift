@@ -10,6 +10,7 @@ class DetailVC: UIViewController {
     var email: String?
     var userID: String?
     var profileUrl: String?
+    var nameOfSocialmedia: String?
     
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameTxtLbl: UILabel!
@@ -32,44 +33,10 @@ class DetailVC: UIViewController {
     
     @IBAction func logOutBtnPressed(_ sender: UIButton) {
         // Logout from different social media platforms
-        
-        if let provider = GIDSignIn.sharedInstance()?.currentUser?.authentication?.idToken,
-           provider == GIDSignIn.sharedInstance()?.currentUser?.authentication?.idToken {
-            GIDSignIn.sharedInstance()?.signOut()
-        } else if let accessToken = AccessToken.current, !accessToken.isExpired {
-            let loginManager = LoginManager()
-            loginManager.logOut()
-        } else if let userID = userID {
-            let appleIDProvider = ASAuthorizationAppleIDProvider()
-            appleIDProvider.getCredentialState(forUserID: userID) { [weak self] (credentialState: ASAuthorizationAppleIDProvider.CredentialState, error: Error?) -> Void in
-                guard let self = self else { return }
-                switch credentialState {
-                case .authorized:
-                    // Perform Apple logout
-                    let appleIDProvider = ASAuthorizationAppleIDProvider()
-                    let request = appleIDProvider.createRequest()
-                    request.requestedOperation = .operationLogout
-                    let authorizationController = ASAuthorizationController(authorizationRequests: [request])
-                    authorizationController.performRequests()
-                    
-                case .notFound, .revoked:
-                    // User is already logged out or revoked
-                    self.showLogoutSuccessAlert()
-                    
-                case .transferred:
-                    // Credential transferred to a different device
-                    self.showLogoutFailureAlert()
-                    
-                @unknown default:
-                    self.showLogoutFailureAlert()
-                }
-            }
-        }
-        
+        logOut()
         // Perform any other necessary cleanup or navigation
     }
     
-  
     // Helper method to show logout success alert and pop the view controller
     private func showLogoutSuccessAlert() {
         DispatchQueue.main.async { [weak self] in
@@ -81,7 +48,6 @@ class DetailVC: UIViewController {
             self?.present(alertController, animated: true, completion: nil)
         }
     }
-
     
     // Helper method to show logout failure alert
     private func showLogoutFailureAlert() {
@@ -90,6 +56,71 @@ class DetailVC: UIViewController {
             alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self?.present(alertController, animated: true, completion: nil)
         }
+    }
+    
+    func logOut() {
+        guard let nameOfSocialmedia = nameOfSocialmedia else {
+            // Social media name is not available, handle the logout accordingly
+            return
+        }
+        
+        switch nameOfSocialmedia {
+        case "Google":
+            GIDSignIn.sharedInstance()?.signOut()
+            showLogoutSuccessAlert()
+            
+        case "FaceBook":
+            let loginManager = LoginManager()
+            loginManager.logOut()
+            showLogoutSuccessAlert()
+            
+        case "Apple":
+            let appleIDProvider = ASAuthorizationAppleIDProvider()
+            appleIDProvider.getCredentialState(forUserID: userID!) { [weak self] credentialState, error in
+                guard let self = self else { return }
+                
+                switch credentialState {
+                case .authorized:
+                    let appleIDProvider = ASAuthorizationAppleIDProvider()
+                    let request = appleIDProvider.createRequest()
+                    request.requestedOperation = .operationLogout
+                    
+                    let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+                    authorizationController.delegate = self
+                    authorizationController.performRequests()
+                    
+                case .notFound, .revoked:
+                    // User is already logged out or revoked
+                    self.showLogoutSuccessAlert()
+                    
+                case .transferred:
+                    // Credential transferred to a different device
+                    self.showLogoutFailureAlert()
+                    
+                default:
+                    // Unknown state
+                    self.showLogoutFailureAlert()
+                }
+            }
+            
+        default:
+            // Handle logout for other social media platforms if needed
+            break
+        }
+        
+        // Perform any other necessary cleanup or navigation
+    }
+}
+
+extension DetailVC: ASAuthorizationControllerDelegate {
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        // Logout succeeded
+        showLogoutSuccessAlert()
+    }
+    
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        // Logout failed
+        showLogoutFailureAlert()
     }
 }
 

@@ -49,6 +49,7 @@ class MainVC: UIViewController, GIDSignInDelegate, LoginButtonDelegate {
             destinationVC.userID = user.userID
             destinationVC.email = data.email
             destinationVC.profileUrl = profilePictureURL
+            destinationVC.nameOfSocialmedia = "Google"
             navigationController?.pushViewController(destinationVC, animated: true)
         }else{
             activityIndicatorView.isHidden = true
@@ -74,6 +75,7 @@ class MainVC: UIViewController, GIDSignInDelegate, LoginButtonDelegate {
                         destinationVC.userID = userID
                         destinationVC.email = email
                         destinationVC.profileUrl = profilePictureURL
+                        destinationVC.nameOfSocialmedia = "FaceBook"
                         self.navigationController?.pushViewController(destinationVC, animated: true)
                     }
                 }
@@ -125,6 +127,7 @@ extension MainVC: ASAuthorizationControllerDelegate {
             destinationVC.userID = userID
             destinationVC.email = email
             destinationVC.profileUrl = nil // Apple sign-in doesn't provide a profile picture
+            destinationVC.nameOfSocialmedia = "Apple"
             navigationController?.pushViewController(destinationVC, animated: true)
         }
     }
