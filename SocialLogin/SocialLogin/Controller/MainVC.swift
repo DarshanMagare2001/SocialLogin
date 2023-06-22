@@ -50,6 +50,8 @@ class MainVC: UIViewController, GIDSignInDelegate, LoginButtonDelegate {
             destinationVC.email = data.email
             destinationVC.profileUrl = profilePictureURL
             navigationController?.pushViewController(destinationVC, animated: true)
+        }else{
+            activityIndicatorView.isHidden = true
         }
     }
     
@@ -93,8 +95,10 @@ class MainVC: UIViewController, GIDSignInDelegate, LoginButtonDelegate {
         loginManager.logIn(permissions: ["public_profile"], from: self) { result, error in
             if let error = error {
                 print("Encountered Erorr: \(error)")
+                self.activityIndicatorView.isHidden = true
             } else if let result = result, result.isCancelled {
                 print("Cancelled")
+                self.activityIndicatorView.isHidden = true
             } else {
                 print("Logged In")
                 self.fetchFacebookUserProfile()
