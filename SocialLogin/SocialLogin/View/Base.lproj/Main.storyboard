@@ -201,21 +201,57 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LMe-v8-OXJ">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="tGz-2f-8DU">
+                                        <rect key="frame" x="110" y="234" width="100" height="100"/>
+                                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="qKx-p5-4Pm"/>
+                                            <constraint firstAttribute="width" constant="100" id="uqR-As-BG4"/>
+                                        </constraints>
+                                        <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layerCornerRadius">
+                                                <real key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="layerBorderColor">
+                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layerBorderWidth">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="separatorColor"/>
+                                <constraints>
+                                    <constraint firstItem="tGz-2f-8DU" firstAttribute="centerX" secondItem="LMe-v8-OXJ" secondAttribute="centerX" id="eHe-Ca-tZs"/>
+                                    <constraint firstItem="tGz-2f-8DU" firstAttribute="centerY" secondItem="LMe-v8-OXJ" secondAttribute="centerY" id="ggJ-HH-fMM"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                         <constraints>
                             <constraint firstItem="GOd-fy-NQw" firstAttribute="top" secondItem="wXa-EM-yHS" secondAttribute="bottom" constant="20" id="3ah-MN-osd"/>
                             <constraint firstItem="GOd-fy-NQw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Cdj-Qh-goK"/>
+                            <constraint firstItem="LMe-v8-OXJ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Fiu-ph-cYF"/>
                             <constraint firstItem="wXa-EM-yHS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="OWF-VN-dRc"/>
+                            <constraint firstItem="LMe-v8-OXJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Oja-df-fy8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="GOd-fy-NQw" secondAttribute="bottom" constant="20" id="Sqc-dK-Wif"/>
+                            <constraint firstAttribute="bottom" secondItem="LMe-v8-OXJ" secondAttribute="bottom" id="YqP-2s-grV"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="GOd-fy-NQw" secondAttribute="trailing" constant="20" id="m39-GY-jZH"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wXa-EM-yHS" secondAttribute="trailing" constant="20" id="mJa-xL-Sz3"/>
+                            <constraint firstItem="LMe-v8-OXJ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="qBz-AW-MvF"/>
                             <constraint firstItem="wXa-EM-yHS" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="yab-fj-sUy"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Zje-Ss-FrV"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="tGz-2f-8DU" id="V5e-yb-0Fm"/>
+                        <outlet property="activityIndicatorView" destination="LMe-v8-OXJ" id="g3V-Xs-1vy"/>
                         <segue destination="WjZ-Vp-b7N" kind="show" id="WCt-e3-BtR"/>
                     </connections>
                 </viewController>
@@ -327,6 +363,9 @@
         <image name="googleIcon" width="512" height="512"/>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="separatorColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
