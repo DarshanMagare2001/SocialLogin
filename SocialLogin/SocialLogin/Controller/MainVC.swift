@@ -5,37 +5,16 @@ import FacebookLogin
 import AuthenticationServices
 
 class MainVC: UIViewController, GIDSignInDelegate, LoginButtonDelegate {
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         GIDSignIn.sharedInstance()?.delegate = self
         
-        let loginButton = UIButton(type: .custom)
-        loginButton.backgroundColor = .darkGray
-        loginButton.frame = CGRect(x: 0, y: 0, width: 180, height: 40)
-        loginButton.center = view.center
-        loginButton.setTitle("My Login Button", for: .normal)
-        
-        // Handle clicks on the button
-        loginButton.addTarget(self, action: #selector(loginButtonClicked), for: .touchUpInside)
-        
-        view.addSubview(loginButton)
-        
-        
     }
     
     
-    @objc func loginButtonClicked() {
-          let loginManager = LoginManager()
-          loginManager.logIn(permissions: ["public_profile"], from: self) { result, error in
-              if let error = error {
-                  print("Encountered Erorr: \(error)")
-              } else if let result = result, result.isCancelled {
-                  print("Cancelled")
-              } else {
-                  print("Logged In")
-              }
-          }
-      }
+    
     
     
     
@@ -46,22 +25,7 @@ class MainVC: UIViewController, GIDSignInDelegate, LoginButtonDelegate {
     }
     
     @IBAction func signInWithFacebookBtnPressed(_ sender: UIButton) {
-        let loginManager = LoginManager()
-        loginManager.logIn(permissions: ["email"], viewController: self) { result in
-            switch result {
-            case .success(let grantedPermissions, _, _):
-                if grantedPermissions.contains("email") {
-                    self.fetchFacebookUserProfile()
-                    // TODO: Handle publishing content with the "email" permission
-                } else {
-                    print("Email permission not granted.")
-                }
-            case .cancelled:
-                print("Facebook login cancelled.")
-            case .failed(let error):
-                print("Facebook login failed: \(error.localizedDescription)")
-            }
-        }
+        loginButtonClicked()
     }
     
     @IBAction func signInWithAppleBtnPressed(_ sender: UIButton) {
@@ -119,19 +83,26 @@ class MainVC: UIViewController, GIDSignInDelegate, LoginButtonDelegate {
     }
     
     func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
-        if result != nil {
-            if let grantedPermissions = result?.grantedPermissions, grantedPermissions.contains("email") {
-                fetchFacebookUserProfile()
-                // TODO: Handle publishing content with the "email" permission
+        
+    }
+    
+    
+    func loginButtonClicked() {
+        let loginManager = LoginManager()
+        loginManager.logIn(permissions: ["public_profile"], from: self) { result, error in
+            if let error = error {
+                print("Encountered Erorr: \(error)")
+            } else if let result = result, result.isCancelled {
+                print("Cancelled")
             } else {
-                print("Email permission not granted.")
+                print("Logged In")
+                self.fetchFacebookUserProfile()
             }
-        } else if let error = error {
-            print("Facebook login failed: \(error.localizedDescription)")
-        } else {
-            print("Facebook login cancelled.")
         }
     }
+    
+    
+    
     
 }
 
