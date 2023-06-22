@@ -9,6 +9,15 @@
           "revision": "c1f60c63f356d364f4284ba82961acbe7de79bcc",
           "version": "7.8.1"
         }
+      },
+      {
+        "package": "SwifterSwift",
+        "repositoryURL": "https://github.com/SwifterSwift/SwifterSwift.git",
+        "state": {
+          "branch": null,
+          "revision": "933f27d8e7fa0bf8200a5d6235e0de383b801126",
+          "version": "5.3.0"
+        }
       }
     ]
   },

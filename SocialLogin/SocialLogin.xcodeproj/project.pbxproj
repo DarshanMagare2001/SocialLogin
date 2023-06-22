@@ -14,6 +14,7 @@
 		139A04CE2A42BA7400516865 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 139A04CD2A42BA7400516865 /* Assets.xcassets */; };
 		139A04D12A42BA7400516865 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 139A04CF2A42BA7400516865 /* LaunchScreen.storyboard */; };
 		139A04DE2A42DD5500516865 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139A04DD2A42DD5500516865 /* DetailVC.swift */; };
+		13A12A722A4419E600532BC6 /* SwifterSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 13A12A712A4419E600532BC6 /* SwifterSwift */; };
 		13D05EA32A42E97100CDF4AD /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 13D05EA22A42E97100CDF4AD /* Kingfisher */; };
 		BC23FD0AFB390D36DAC74330 /* Pods_SocialLogin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 131B6FF84AD4ECD0AD3CD6C9 /* Pods_SocialLogin.framework */; };
 /* End PBXBuildFile section */
@@ -39,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13A12A722A4419E600532BC6 /* SwifterSwift in Frameworks */,
 				13D05EA32A42E97100CDF4AD /* Kingfisher in Frameworks */,
 				BC23FD0AFB390D36DAC74330 /* Pods_SocialLogin.framework in Frameworks */,
 			);
@@ -159,6 +161,7 @@
 			name = SocialLogin;
 			packageProductDependencies = (
 				13D05EA22A42E97100CDF4AD /* Kingfisher */,
+				13A12A712A4419E600532BC6 /* SwifterSwift */,
 			);
 			productName = SocialLogin;
 			productReference = 139A04C12A42BA7200516865 /* SocialLogin.app */;
@@ -190,6 +193,7 @@
 			mainGroup = 139A04B82A42BA7200516865;
 			packageReferences = (
 				13D05EA12A42E97100CDF4AD /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				13A12A702A4419E600532BC6 /* XCRemoteSwiftPackageReference "SwifterSwift" */,
 			);
 			productRefGroup = 139A04C22A42BA7200516865 /* Products */;
 			projectDirPath = "";
@@ -506,6 +510,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		13A12A702A4419E600532BC6 /* XCRemoteSwiftPackageReference "SwifterSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwifterSwift/SwifterSwift.git";
+			requirement = {
+				kind = exactVersion;
+				version = 5.3.0;
+			};
+		};
 		13D05EA12A42E97100CDF4AD /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -517,6 +529,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		13A12A712A4419E600532BC6 /* SwifterSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 13A12A702A4419E600532BC6 /* XCRemoteSwiftPackageReference "SwifterSwift" */;
+			productName = SwifterSwift;
+		};
 		13D05EA22A42E97100CDF4AD /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 13D05EA12A42E97100CDF4AD /* XCRemoteSwiftPackageReference "Kingfisher" */;
