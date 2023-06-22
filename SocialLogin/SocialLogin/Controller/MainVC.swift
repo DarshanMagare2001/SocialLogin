@@ -55,7 +55,7 @@ class MainVC: UIViewController, GIDSignInDelegate, LoginButtonDelegate {
     
     func fetchFacebookUserProfile() {
         if let accessToken = AccessToken.current, !accessToken.isExpired {
-            let graphRequest = GraphRequest(graphPath: "me", parameters: ["fields": "id,name,email,picture.width(200).height(200)"], tokenString: accessToken.tokenString, version: nil, httpMethod: .get)
+            let graphRequest = GraphRequest(graphPath: "me", parameters: ["fields": "id,name,email,picture"], tokenString: accessToken.tokenString, version: nil, httpMethod: .get)
             graphRequest.start { _, result, error in
                 if let error = error {
                     print("Error fetching Facebook user profile: \(error.localizedDescription)")
