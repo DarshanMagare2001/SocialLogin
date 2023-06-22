@@ -72,7 +72,6 @@
 			children = (
 				13D05EB62A4312A400CDF4AD /* SocialLogin.entitlements */,
 				139A04DB2A42BB0D00516865 /* App */,
-				139A04D92A42BAD300516865 /* Model */,
 				139A04DA2A42BAE000516865 /* View */,
 				139A04D82A42BAC800516865 /* Controller */,
 				139A04DC2A42BB2600516865 /* Resources */,
@@ -88,13 +87,6 @@
 				139A04DD2A42DD5500516865 /* DetailVC.swift */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		139A04D92A42BAD300516865 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		139A04DA2A42BAE000516865 /* View */ = {

@@ -4,6 +4,8 @@ import FBSDKLoginKit
 import FacebookLogin
 import AuthenticationServices
 
+// This is main controller which show various options for login google,facebook and apple
+
 class MainVC: UIViewController, GIDSignInDelegate, LoginButtonDelegate {
     @IBOutlet weak var activityIndicatorView: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -15,16 +17,22 @@ class MainVC: UIViewController, GIDSignInDelegate, LoginButtonDelegate {
         
     }
     
+    // This is Google signin button
+    
     @IBAction func signInWithGoogleBtnPressed(_ sender: UIButton) {
         GIDSignIn.sharedInstance()?.presentingViewController = self
         GIDSignIn.sharedInstance()?.signIn()
         activityIndicatorView.isHidden = false
     }
     
+    // This is Facebook Button
+    
     @IBAction func signInWithFacebookBtnPressed(_ sender: UIButton) {
         loginButtonClicked()
         activityIndicatorView.isHidden = false
     }
+    
+    // This is Apple button
     
     @IBAction func signInWithAppleBtnPressed(_ sender: UIButton) {
         let appleIDProvider = ASAuthorizationAppleIDProvider()
@@ -37,6 +45,8 @@ class MainVC: UIViewController, GIDSignInDelegate, LoginButtonDelegate {
         authorizationController.performRequests()
         activityIndicatorView.isHidden = false
     }
+    
+    // This is google signin function
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if error == nil {
@@ -55,6 +65,8 @@ class MainVC: UIViewController, GIDSignInDelegate, LoginButtonDelegate {
             activityIndicatorView.isHidden = true
         }
     }
+    
+    // This is facebook data fetcher
     
     func fetchFacebookUserProfile() {
         if let accessToken = AccessToken.current, !accessToken.isExpired {
@@ -91,6 +103,7 @@ class MainVC: UIViewController, GIDSignInDelegate, LoginButtonDelegate {
         
     }
     
+    // This is facebook signin function
     
     func loginButtonClicked() {
         let loginManager = LoginManager()
@@ -114,6 +127,9 @@ class MainVC: UIViewController, GIDSignInDelegate, LoginButtonDelegate {
 }
 
 extension MainVC: ASAuthorizationControllerDelegate {
+    
+    // This is apple signin function
+    
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
             activityIndicatorView.isHidden = true

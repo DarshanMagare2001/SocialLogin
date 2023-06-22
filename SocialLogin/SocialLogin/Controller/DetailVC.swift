@@ -5,6 +5,8 @@ import FBSDKLoginKit
 import FacebookLogin
 import AuthenticationServices
 
+// This is DetailVC which show user data
+
 class DetailVC: UIViewController {
     var name: String?
     var email: String?
@@ -30,6 +32,8 @@ class DetailVC: UIViewController {
             }
         }
     }
+    
+    // This is logout button
     
     @IBAction func logOutBtnPressed(_ sender: UIButton) {
         // Logout from different social media platforms
@@ -66,6 +70,9 @@ class DetailVC: UIViewController {
             self?.present(alertController, animated: true, completion: nil)
         }
     }
+    
+    
+    // This is logout function
     
     func logOut() {
         guard let nameOfSocialmedia = nameOfSocialmedia else {
