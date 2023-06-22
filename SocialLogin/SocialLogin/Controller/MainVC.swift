@@ -9,7 +9,36 @@ class MainVC: UIViewController, GIDSignInDelegate, LoginButtonDelegate {
         super.viewDidLoad()
         GIDSignIn.sharedInstance()?.delegate = self
         
+        let loginButton = UIButton(type: .custom)
+        loginButton.backgroundColor = .darkGray
+        loginButton.frame = CGRect(x: 0, y: 0, width: 180, height: 40)
+        loginButton.center = view.center
+        loginButton.setTitle("My Login Button", for: .normal)
+        
+        // Handle clicks on the button
+        loginButton.addTarget(self, action: #selector(loginButtonClicked), for: .touchUpInside)
+        
+        view.addSubview(loginButton)
+        
+        
     }
+    
+    
+    @objc func loginButtonClicked() {
+          let loginManager = LoginManager()
+          loginManager.logIn(permissions: ["public_profile"], from: self) { result, error in
+              if let error = error {
+                  print("Encountered Erorr: \(error)")
+              } else if let result = result, result.isCancelled {
+                  print("Cancelled")
+              } else {
+                  print("Logged In")
+              }
+          }
+      }
+    
+    
+    
     
     @IBAction func signInWithGoogleBtnPressed(_ sender: UIButton) {
         GIDSignIn.sharedInstance()?.presentingViewController = self
